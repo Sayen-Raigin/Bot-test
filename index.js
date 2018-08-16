@@ -11,6 +11,10 @@ bot.on('ready',function(){
     bot.user.setGame("Aide : !gh");
 })
 
+
+
+
+
 //--------------- Help ---------------------------
 bot.on('message', message => {
     var splitMessage = message.content.split(" ");
@@ -85,15 +89,7 @@ bot.on('message', message => {
         if(splitMessage.length === 2){
             var idUser,
                 IdDiscord=splitMessage[1].replace('<@','').replace('>','').replace('!',''),
-				FilesUsers = require(PathFoldersObject+"/ClassMembreDiscord.js");
-                //FileUsers=fs.readdirSync(PathObjetsUsers, (err, files) => {files.length});
-            /*for(var i=0;;i++){
-                if (i >= FileUsers.length) break;
-                var contenu = fs.readFileSync(PathObjetsUsers+'/'+FileUsers[i], "utf8")
-				monobjet = JSON.parse(contenu);
-				if(monobjet.id === IdDiscord){ idUser = monobjet.idTcgo}
-                //console.log(i)
-            }*/
+				FilesUsers = require("Sayen-Raigin/Bot-Tcgo/.gitignore/Objets/Membres/ClassMembreDiscord.js");
 			
 			for(var i=1;i <= FilesUsers.length ;i++){
 				if(FilesUsers['user'+i].id === IdDiscord){ idUser = FilesUsers['user'+i].idTcgo; break}
@@ -106,45 +102,3 @@ bot.on('message', message => {
         }
     }
 })
-
-
-/*
-//--------------- Gestion role ------------------------
-bot.on('message', message => {
-    var RoleConseiller      =message.guild.roles.get("428729085234118687") //?_Conseiller
-    var RoleNotBuild        =message.guild.roles.get("428385886946983937") //💫 NotExp 💫
-    // Avec guild.memebr on réceptionne le message, puis on lui envoie l'autheur du messaega afin de capturer l'objet utilisateur ! 
-    var UserMessage         =message.guild.member(message.author)
-    
-    var comparchannel=message.guild.channels.find("name", "plan-de-construction🔨");
-    if(message.channel.id === comparchannel.id ){
-       if(!message.member.roles.has(RoleConseiller.id)){UserMessage.addRole(RoleNotBuild).catch(console.error)} 
-    }
-    
-    // la fonction split() (comme dans powershell), va ségmenter les caractères dans un tableaux
-    var splitMessage = message.content.split(" ");
-    
-    //set-rôle -rm
-    if(splitMessage[0] === Prefix+'srole'){
-        //console.log('Enter 1 Houssam -----')
-        
-        // Paramètre de suppression de rôle
-        if(splitMessage[1] === '-r'){
-            //console.log('Enter 2 Houssam -----')
-            if(splitMessage.length === 3){
-                
-                if(message.member.roles.has(RoleConseiller.id)){
-                    var TargetUser = message.guild.member(message.mentions.users.first())
-                    if(TargetUser){ TargetUser.removeRole(RoleNotBuild) ; message.reply("Le rôle"+RoleNotBuild.name+" a été supprimé")}
-                }else {
-                    message.author.sendMessage(
-                        "Tu n'as pas la permission d'utiliser cette commande !"+'\n'+'\n'
-                        +"Dans le discord "+message.guild.name+", seul les membres ayant le rôle "
-                        +RoleConseiller.name+" peuvent l'utiliser (:p) "
-                    )
-                }
-            }
-        }
-    }
-})
-*/
