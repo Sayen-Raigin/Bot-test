@@ -89,7 +89,7 @@ bot.on('message', message => {
         if(splitMessage.length === 2){
             var idUser,
                 IdDiscord=splitMessage[1].replace('<@','').replace('>','').replace('!',''),
-				FilesUsers = require("Sayen-Raigin/Bot-Tcgo/blob/master/.gitignore/Objets/Membres/ClassMembreDiscord.js");
+				FilesUsers = require("Sayen-Raigin/Bot-Tcgo/.gitignore/Objets/Membres/ClassMembreDiscord.js");
 			
 			for(var i=1;i <= FilesUsers.length ;i++){
 				if(FilesUsers['user'+i].id === IdDiscord){ idUser = FilesUsers['user'+i].idTcgo; break}
